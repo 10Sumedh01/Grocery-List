@@ -2,7 +2,7 @@ import Header from "./Header";
 import AddItem from "./AddItem";
 import Content from "./Content";
 import Footer from "./Footer";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { hasFormSubmit } from "@testing-library/user-event/dist/utils";
 import SearchItem from "./SearchItem";
 
@@ -12,13 +12,18 @@ function App() {
   const [newItems, setNewItems] = useState("")
 
   const [search,setSearch] = useState("")
-  
+
+  useEffect(() => {
+    localStorage.setItem('shoppinglist',JSON.stringify(items))
+
+  }, [items])
+
   const addItems = (item) => {
     const id = items.length ? items[items.length - 1 ].id + 1 : 1;
     const myNewItem = {id , checked:false, item}
     const listItems = [...items, myNewItem]
     setItems(listItems);
-    localStorage.setItem("shoppinglist", JSON.stringify(listItems));
+    // localStorage.setItem("shoppinglist", JSON.stringify(listItems));
   }
 
   const handleCheck = (id) => {
@@ -26,13 +31,13 @@ function App() {
       item.id === id ? { ...item, checked: !item.checked } : item
     );
     setItems(listItems);
-    localStorage.setItem("shoppinglist", JSON.stringify(listItems));
+    // localStorage.setItem("shoppinglist", JSON.stringify(listItems));
   };
 
   const handleDelete = (id) => {
     const listItems = items.filter((item) => item.id !== id);
     setItems(listItems);
-    localStorage.setItem("shoppinglist", JSON.stringify(listItems));
+    // localStorage.setItem("shoppinglist", JSON.stringify(listItems));
   };
 
 
