@@ -7,7 +7,7 @@ import { hasFormSubmit } from "@testing-library/user-event/dist/utils";
 import SearchItem from "./SearchItem";
 
 function App() {
-  const [items, setItems] = useState(JSON.parse(localStorage.getItem('shoppinglist')));
+  const [items, setItems] = useState(JSON.parse(localStorage.getItem('shoppinglist')) || []);
 
   const [newItems, setNewItems] = useState("")
 
@@ -58,5 +58,7 @@ function App() {
     </div>
   );
 }
+
+
 
 export default App;

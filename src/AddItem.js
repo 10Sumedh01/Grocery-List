@@ -26,4 +26,6 @@ const AddItem = ({newItems, setNewItems, handleSubmit}) => {
   );
 };
 
+// AddItem.defaultProps = {setNewItems: "items"}
+
 export default AddItem;

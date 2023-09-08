@@ -17,4 +17,8 @@ const ItemList = ({ items, handleCheck, handleDelete }) => {
   );
 };
 
+// ItemList.defaultProps ={
+//   items : "items"
+// }
+
 export default ItemList;
